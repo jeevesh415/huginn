@@ -38,10 +38,11 @@ module Agents
       * `this.unescapeHtml(htmlToUnescape)`
     MD
 
-    form_configurable :language, type: :array, values: %w[JavaScript CoffeeScript]
-    form_configurable :code, type: :text, ace: true
+    form_configurable :code, type: :text, ace: { mode: 'javascript' }
     form_configurable :expected_receive_period_in_days
     form_configurable :expected_update_period_in_days
+
+    before_validation { self.options['language'] = 'JavaScript' }
 
     def validate_options
       cred_name = credential_referenced_by_code
@@ -52,9 +53,6 @@ module Agents
         errors.add(:base, "The 'code' option is required") unless options['code'].present?
       end
 
-      if interpolated['language'].present? && !interpolated['language'].downcase.in?(%w[javascript coffeescript])
-        errors.add(:base, "The 'language' must be JavaScript or CoffeeScript")
-      end
     end
 
     def working?
@@ -136,11 +134,7 @@ module Agents
       context.attach("getKeyValueStores", -> { kvs })
       context.eval("Object.defineProperty(Agent, 'kvs', { get: getKeyValueStores })")
 
-      if (options['language'] || '').downcase == 'coffeescript'
-        context.eval(CoffeeScript.compile(code))
-      else
-        context.eval(code)
-      end
+      context.eval(code)
       context.eval("Agent.#{js_function}();")
     end
 

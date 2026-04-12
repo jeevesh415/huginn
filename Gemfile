@@ -29,21 +29,17 @@ end
 # Optional libraries.  To conserve RAM, comment out any that you don't need,
 # then run `bundle` and commit the updated Gemfile and Gemfile.lock.
 gem 'erector', github: 'dsander/erector', branch: 'rails6'
-gem 'hipchat', '~> 1.6.0' # HipchatAgent
+gem 'hipchat' # HipchatAgent
 gem 'pdf-reader' # PDFInfoAgent
 gem 'mini_racer', github: 'knu/mini_racer', branch: 'fix/darwin_build' # JavaScriptAgent
 gem 'mqtt' # MQTTAgent
 gem 'net-ftp'
 gem 'net-ftp-list' # FtpsiteAgent
 gem 'pirate_weather_forecast_ruby' # WeatherAgent
-gem 'rturk', '~> 2.12.1'          # HumanTaskAgent
-gem 'slack-notifier', '~> 2.4.0'  # SlackAgent
-gem 'twilio-ruby', '~> 7.8.5'     # TwilioAgent
-gem 'xmpp4r', '~> 0.5.6'          # JabberAgent
-
-# Weibo Agents
-# FIXME needs to loosen omniauth dependency, add rest-client
-gem 'weibo_2', github: 'albertsun/weibo_2', branch: 'master'
+gem 'rturk'                       # HumanTaskAgent
+gem 'slack-notifier'              # SlackAgent
+gem 'twilio-ruby'                 # TwilioAgent
+gem 'xmpp4r'                      # JabberAgent
 
 # GoogleCalendarPublishAgent
 gem 'google-apis-calendar_v3'
@@ -51,16 +47,14 @@ gem 'google-cloud-translate-v2'
 
 # Twitter Agents
 gem 'omniauth-twitter'
-gem 'twitter', github: 'sferik/twitter' # Must to be loaded before cantino-twitter-stream.
-gem 'twitter-stream', github: 'cantino/twitter-stream', branch: 'huginn'
+gem 'twitter', '~> 8.3'
 
 # Tumblr Agents
-gem 'omniauth-tumblr'
-gem 'tumblr_client', github: 'IFTTT/tumblr_client'
+gem 'omniauth-oauth', '~> 1.2', '>= 1.2.1'
+gem 'simple_oauth'
 
 # Dropbox Agents
-gem 'dropbox-api', github: 'dsander/dropbox-api', ref: '86cb7b5a1254dc5b054de7263835713c4c1018c7'
-gem 'omniauth-dropbox-oauth2', github: 'huginn/omniauth-dropbox-oauth2'
+gem 'omniauth-dropbox2', '>= 2.0.5'
 
 # UserLocationAgent
 gem 'haversine'
@@ -70,24 +64,23 @@ gem 'evernote_oauth'
 gem 'omniauth-evernote'
 
 # LocalFileAgent (watch functionality)
-gem 'listen', '~> 3.9.0', require: false
+gem 'listen', require: false
 
 # S3Agent
-gem 'aws-sdk-s3', '~> 1', '>= 1.199.1'
+gem 'aws-sdk-s3', '~> 1', '>= 1.219.0'
 
 # ImapFolderAgent
 gem 'gmail_xoauth' # support for Gmail using OAuth
-gem 'omniauth-google-oauth2', '~> 1.0.1'
+gem 'omniauth-google-oauth2', '~> 1.2.2'
 
 # Common gems
 gem 'ace-rails-ap'
 gem 'bootsnap', require: false
-gem 'bootstrap-kaminari-views', '~> 0.0.5'
-gem 'coffee-rails', '~> 5'
+gem 'bootstrap-kaminari-views'
 gem 'daemons'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
-gem 'devise', '~> 5.0', '>= 5.0.2'
+gem 'devise', '~> 5.0', '>= 5.0.3'
 gem 'em-http-request'
 gem 'execjs'
 gem 'faraday'
@@ -95,30 +88,31 @@ gem 'faraday'
 gem 'faraday-follow_redirects'
 gem 'faraday-gzip'
 # gem 'faraday-httpclient'
+gem 'faraday-multipart'
 gem 'faraday-typhoeus'
 gem 'feedjira', '~> 4.0', '>= 4.0.1'
-gem 'foreman', '~> 0.90.0'
-gem 'geokit', '~> 1.14'
-gem 'geokit-rails', '~> 2.5'
-gem 'httmultiparty', '~> 0.3.16'
-gem 'httparty', github: 'jnunemaker/httparty'
+gem 'foreman'
+gem 'geokit'
+gem 'geokit-rails'
+gem 'httmultiparty'
+gem 'httparty', '>= 0.24.2'
 gem 'huginn_agent'
-gem 'jquery-rails', '~> 4.6', '>= 4.6.1'
+gem 'jquery-rails'
 gem 'json'
-gem 'jsonpath', '~> 1.1', '>= 1.1.5'
+gem 'jsonpath'
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 gem 'kramdown'
-gem 'liquid', '~> 5.6', '5.6.0'
+gem 'liquid', '~> 5.12'
 gem 'logger'
-gem 'loofah', '~> 2.25'
+gem 'loofah', '~> 2.25', '>= 2.25.1'
 gem 'mail', '>= 2.9.0'
 gem 'mini_magick', '>= 5.3.1'
 gem 'multi_xml'
-gem 'nokogiri', '>= 1.18.10'
+gem 'nokogiri', '>= 1.19.2'
 gem 'omniauth'
 gem 'ostruct'
 gem 'puma'
-gem 'rails', '~> 8.1.2'
+gem 'rails', '~> 8.1.3'
 gem 'rails-html-sanitizer', '~> 1.7'
 gem 'rufus-scheduler', '~> 3.9', '>= 3.9.2', require: false
 gem 'sassc-rails'
@@ -135,14 +129,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'guard'
-  gem 'guard-livereload'
-  gem 'guard-rspec'
-  gem 'letter_opener_web', '~> 3.0'
-  gem 'rack-livereload'
-  gem 'web-console', '>= 4.2.1'
+  gem 'letter_opener_web'
 
   gem 'capistrano'
   gem 'capistrano-bundler'
@@ -160,17 +147,17 @@ group :development do
 
   group :test do
     gem 'capybara'
-    gem 'capybara-select-2', github: 'Hirurg103/capybara_select2', require: false
+    gem 'capybara-select-2', require: false
     gem 'rails-controller-testing'
     gem 'rr', require: false
     gem 'rspec'
     gem 'rspec-collection_matchers'
     gem 'rspec-html-matchers'
     gem 'rspec-mocks'
+    gem 'rspec-retry'
     gem 'selenium-webdriver'
-    gem 'shoulda-matchers'
     gem 'simplecov', require: false
-    gem 'simplecov-lcov', '~> 0.9.0', require: false
+    gem 'simplecov-lcov', require: false
     gem 'vcr'
     gem 'webmock'
   end
@@ -178,7 +165,7 @@ end
 
 # Platform requirements.
 require 'rbconfig'
-gem 'ffi', '>= 1.17.3'	# required by typhoeus; 1.9.4 has fixes for *BSD.
+gem 'ffi', '>= 1.17.4'	# required by typhoeus; 1.9.4 has fixes for *BSD.
 gem 'tzinfo', '>= 2.0.6'	# required by rails; 1.2.0 has support for *BSD and Solaris.
 # Windows does not have zoneinfo files, so bundle the tzinfo-data gem.
 gem 'tzinfo-data', platforms: %i[windows]
