@@ -52,7 +52,7 @@ sudo -u huginn -H cp Procfile.bak Procfile
 
 ### 4. Update ruby version
 
-Ensure you have Ruby 3.4 installed:
+Ensure you have Ruby 4.0.4 installed:
 
 ```
 ruby -v
@@ -62,8 +62,8 @@ Upgrade when required:
 
 ```
 mkdir /tmp/ruby && cd /tmp/ruby
-curl -L --progress https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.8.tar.xz | tar xJ
-cd ruby-3.4.8
+curl -L --progress https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.4.tar.xz | tar xJ
+cd ruby-4.0.4
 ./configure --disable-install-rdoc
 make -j`nproc`
 sudo make install
@@ -74,9 +74,10 @@ sudo gem install rake bundler foreman --no-document
 
 ```
 cd /home/huginn/huginn
+sudo -u huginn -H npm install
 bundle config set --local deployment 'true'
 bundle config set --local without 'development test'
-sudo -u huginn -H bundle install --deployment --without development test
+sudo -u huginn -H bundle install
 
 # Run database migrations
 sudo -u huginn -H bundle exec rake db:migrate RAILS_ENV=production

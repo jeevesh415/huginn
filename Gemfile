@@ -47,7 +47,7 @@ gem 'google-cloud-translate-v2'
 
 # Twitter Agents
 gem 'omniauth-twitter'
-gem 'twitter', '~> 8.3'
+gem 'twitter', '~> 8.3', '>= 8.3.1'
 
 # Tumblr Agents
 gem 'omniauth-oauth', '~> 1.2', '>= 1.2.1'
@@ -67,7 +67,7 @@ gem 'omniauth-evernote'
 gem 'listen', require: false
 
 # S3Agent
-gem 'aws-sdk-s3', '~> 1', '>= 1.219.0'
+gem 'aws-sdk-s3', '~> 1', '>= 1.222.0'
 
 # ImapFolderAgent
 gem 'gmail_xoauth' # support for Gmail using OAuth
@@ -80,7 +80,7 @@ gem 'bootstrap-kaminari-views'
 gem 'daemons'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
-gem 'devise', '~> 5.0', '>= 5.0.3'
+gem 'devise', '~> 5.0', '>= 5.0.4'
 gem 'em-http-request'
 gem 'execjs'
 gem 'faraday'
@@ -90,7 +90,7 @@ gem 'faraday-gzip'
 # gem 'faraday-httpclient'
 gem 'faraday-multipart'
 gem 'faraday-typhoeus'
-gem 'feedjira', '~> 4.0', '>= 4.0.1'
+gem 'feedjira', '~> 4.0', '>= 4.0.2'
 gem 'foreman'
 gem 'geokit'
 gem 'geokit-rails'
@@ -108,7 +108,7 @@ gem 'loofah', '~> 2.25', '>= 2.25.1'
 gem 'mail', '>= 2.9.0'
 gem 'mini_magick', '>= 5.3.1'
 gem 'multi_xml'
-gem 'nokogiri', '>= 1.19.2'
+gem 'nokogiri', '>= 1.19.3'
 gem 'omniauth'
 gem 'ostruct'
 gem 'puma'
